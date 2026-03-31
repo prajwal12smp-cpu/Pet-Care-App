@@ -17,7 +17,9 @@ Structure: Modular folders (assets, auth, user, scripts)
 Version Control: Git & GitHub
 
 📸 Screenshots:
+
 Home Page
+
 <img width="1906" height="978" alt="home page" src="https://github.com/user-attachments/assets/372fff2b-c9f3-4314-8720-c7171b73b71f" />
 
 
