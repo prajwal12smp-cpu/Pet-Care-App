@@ -1,0 +1,138 @@
+/* Universal styles to ensure consistent box model */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f8ff; /* A very light, calming blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333; /* Default text color */
+}
+
+/* Container for the entire form */
+.form-container {
+    background: #fff;
+    padding: 2.5em;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Constrain the width for a better feel on large screens */
+    text-align: center;
+}
+
+/* Header for the form (Login/Sign Up) */
+.form-header {
+    margin-bottom: 1.5em;
+}
+
+.form-header h2 {
+    color: #1a4d7d; /* A deep blue for the main heading */
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+/* Styling for form groups (labels and inputs) */
+.form-group {
+    text-align: left;
+    margin-bottom: 1em;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 0.5em;
+    display: block;
+}
+
+/* Styling for all input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #5b8dae; /* A brighter blue on focus */
+    box-shadow: 0 0 5px rgba(91, 141, 174, 0.5);
+    outline: none;
+}
+
+/* Styles for the main action button */
+button[type="submit"] {
+    width: 100%;
+    padding: 1em;
+    background-color: #5b8dae; /* A calming blue for the button */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #3a6b9a; /* Darker blue on hover */
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+/* Separator line style */
+.seperator {
+    margin: 2em 0;
+    position: relative;
+}
+
+.seperator hr {
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+/* Styling for the link to the other form */
+a {
+    color: #5b8dae;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #3a6b9a;
+    text-decoration: underline;
+}
+
+/* Message div for success or error messages */
+.messageDiv {
+    padding: 1em;
+    margin-bottom: 1.5em;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Green theme for success messages */
+.messageDiv.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Red theme for error messages */
+.messageDiv.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}

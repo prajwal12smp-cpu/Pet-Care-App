@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pet Healthcare Support</title>
+    <link rel="stylesheet" href="/assets/home.css">
+    <title> Pet Health and Care</title>
+</head>
+<body>
+    <header>
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Pet Health Logo" class="logo"/>
+        <h1>Pet Health Care Support</h1>
+        <nav>
+            <a href="home.html" class="active">Home</a>
+            <a href="clinicstore.html">Clinics and Stores</a>
+            <a href="resources.html">Resources</a>
+            <a href="askai.html">Ask AI</a>
+            <a href="profile.html">Profile</a>
+            <button class="logout-btn">Logout</button>
+        </nav>
+        <script type="module" src="/scripts/logout.js"></script>
+    </header>
+    
+    <main>
+        <div class="top-blocks">
+            <section class="notifications">
+                <h2>Notifications</h2>
+                <div class="notification-item">
+                    <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=100&q=80" alt="Cute Dog" />
+                    <p><strong>Reminder:</strong> Time for Bella's annual vet visit next week.</p>
+                </div>
+                <div class="notification-item">
+                    <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=100&q=80" alt="Cute Cat" />
+                    <p><strong>Alert:</strong> New flea prevention treatments available at Stores and Clinics.</p>
+                </div>
+                <div class="notification-item">
+                    <img src="https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=100&q=80" alt="Cute Rabbit" />
+                    <p><strong>Update:</strong> Trending Resources updated with latest pet care tips.</p>
+                </div>
+            </section>
+
+            <section class="trending-resources">
+                <h2>Trending Resources</h2>
+                <div class="resource-list">
+                    <a href="https://www.aspca.org/pet-care" target="_blank" class="resource-item">
+                        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=80&q=80" alt="Cute Dog Resource" />
+                        <span>ASPCA Pet Care</span>
+                    </a>
+                    <a href="https://vcahospitals.com/know-your-pet" target="_blank" class="resource-item">
+                        <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=80&q=80" alt="Cute Cat Resource" />
+                        <span>VCA Know Your Pet</span>
+                    </a>
+                    <a href="https://www.humanesociety.org/resources" target="_blank" class="resource-item">
+                        <img src="https://images.unsplash.com/photo-1523983305033-2079a4232dbe?auto=format&fit=crop&w=80&q=80" alt="Cute Guinea Pig Resource" />
+                        <span>Humane Society Resources</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <section class="book-appointment">
+            <h2>Book Appointment</h2>
+            <div class="appointment-container">
+                <form class="appointment-form">
+                    <div class="form-group">
+                        <label for="petName">Pet's Name:</label>
+                        <input type="text" id="petName" name="petName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactInfo">Contact Info:</label>
+                        <input type="text" id="contactInfo" name="contactInfo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointmentDate">Appointment Date:</label>
+                        <input type="date" id="appointmentDate" name="appointmentDate" required>
+                    </div>
+                    <button type="submit" class="appointment-btn">Schedule Now</button>
+                </form>
+            </div>
+            <script type="module" src="/scripts/apointment.js"></script>
+        </section>
+
+        <section class="faq">
+            <h2>FAQ</h2>
+            <div class="faq-item">
+                <details class="faq-item">
+                    <summary class="faq-question"><span class="icon">&#x1F4AC;</span>How often should I vaccinate my pet?
+                    </summary>
+                    <div class="faq-answer">
+                        Pets should be vaccinated annually or as recommended by your vet based on age and lifestyle.
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question"><span class="icon">&#x1F4AC;</span>What food is best for my dog?
+                    </summary>
+                    <div class="faq-answer">
+                        A balanced diet suited to your dog's age, weight, and activity level is best. Consult your vet for recommendations.
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Pet Care Support. All rights are reserved</p>
+        <p>
+            <a href="#">privacy Policy</a>
+            <a href="#">terms and conditions</a>
+            <a href="#">contact us</a>
+        </p>
+    </footer>
+</body>
+</html>

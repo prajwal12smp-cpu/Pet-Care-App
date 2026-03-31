@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Care - Profile</title>
+  <link rel="stylesheet" href="/assets/profile.css">
+</head>
+<body>
+  <header>
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Pet Health Logo" class="logo"/>
+        <h1>Pet Health Care Support</h1>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="clinicstore.html">Clinics and Stores</a>
+            <a href="resources.html">Resources</a>
+            <a href="askai.html">Ask AI</a>
+            <a href="profile.html" class="active">Profile</a>
+            <button class="logout-btn">Logout</button>
+        </nav>
+        <script type="module" src="/scripts/logout.js"></script>
+    </header>
+  <main>
+    <div class="container">
+      <h1 class="brand"><span>PET CARE AND HEALTH SUPPORT</span></h1>
+      <div class="wrapper">
+        <div class="company-info"></div>
+        <div class="contact">
+          <h3>Pet Profile</h3>
+          <div class="alert">Your Profile data has been saved</div>
+          <form id="petform">
+            <p>
+              <label>Pet Name</label>
+              <input type="text" name="name" id="petname" required>
+            </p>
+            <p>
+              <label>Owner name</label>
+              <input type="text" name="Ownername" id="ownername" required>
+            </p>
+            <p>
+              <label>Species</label>
+              <input type="text" name="Species" id="species" required>
+            </p>
+            <p>
+              <label>Age</label>
+              <input type="number" name="Age" id="age" required>
+            </p>
+            <p>
+              <label>Gender</label>
+              <input type="text" name="Age" id="gender" required>
+            </p>
+            <p>
+              <label>Weight</label>
+              <input type="number" name="Weight" id="weight" required>
+            </p>
+            <p>
+              <label>Address</label>
+              <input type="text" name="Address" id="address" required>
+            </p>
+            <p>
+              <label>Phone Number</label>
+              <input type="number" name="pnumber" id="pnumber" required>
+            </p>
+            <p>
+              <label>Breed</label>
+              <input type="text" name="Breed" id="breed" required>
+            </p>
+            <p>
+              <label>Vaccines</label>
+              <input type="text" name="Vaccines" id="vaccines" required>
+            </p>
+            <p class="full">
+              <label>Medical History</label>
+              <textarea name="medicalhistory" rows="5" id="medicalhistory"></textarea>
+            </p>
+            <button id="save-button">Save</button>
+          </form>
+          <div id="pet-details-display" style="display: none;">
+            <p><strong>Pet Name:</strong> <span id="display-petname"></span></p>
+            <p><strong>Owner Name:</strong> <span id="display-ownername"></span></p>
+            <p><strong>Species:</strong> <span id="display-species"></span></p>
+            <p><strong>Age:</strong> <span id="display-age"></span></p>
+            <p><strong>Gender:</strong> <span id="display-gender"></span></p>
+            <p><strong>Weight:</strong> <span id="display-weight"></span></p>
+            <p><strong>Address:</strong> <span id="display-address"></span></p>
+            <p><strong>Phone Number:</strong> <span id="display-pnumber"></span></p>
+            <p><strong>Breed:</strong> <span id="display-breed"></span></p>
+            <p><strong>Vaccines:</strong> <span id="display-vaccines"></span></p>
+            <p><strong>Medical History:</strong> <span id="display-medicalhistory"></span></p>
+            <button id="edit-button">Edit Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script src="/scripts/profile.js"></script>
+  </main>
+  <footer>
+    <p>&copy; 2025 Pet Care Support. All rights are reserved</p>
+    <p>
+      <a href="#">privacy Policy</a>
+      <a href="#">terms and conditions</a>
+      <a href="#">contact us</a>
+    </p>
+  </footer>
+</body>
+</html>

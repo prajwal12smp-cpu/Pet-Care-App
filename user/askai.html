@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AskAi</title>
+    <link rel="stylesheet" href="/assets/botstyle.css">
+    
+</head>
+<body>
+    <header>
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Pet Health Logo" class="logo"/>
+        <h1>Pet Health Care Support</h1>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="clinicstore.html">Clinics and Stores</a>
+            <a href="resources.html">Resources</a>
+            <a href="askai.html" class="active">Ask AI</a>
+            <a href="profile.html">Profile</a>
+            <button class="logout-btn">Logout</button>
+        </nav>
+        <script type="module" src="/scripts/logout.js"></script>
+    </header>
+<main>
+    <div class="chat-container">
+
+        <div class="chat-header">
+            <h1>
+                ASK AI
+            </h1>
+        </div>
+
+        <div class="chat-message" id="chat-message"> </div>
+
+        <div class="chat-input">
+            <input type="text" placeholder="Ask your query" id="user-input">
+            <button id="sendbtn">Send</button>
+        </div>
+    </div>
+</main>
+<script src="/scripts/botscript.js"></script>
+<hr>
+<footer>
+    <p>&copy; 2025 Pet Care Support. All rights are reserved</p>
+    <p>
+        <a href="#">privacy Policy</a>
+        <a href="#">terms and conditions</a>
+        <a href="#">contact us</a>
+    </p>
+</footer>
+</body>
+</html>
