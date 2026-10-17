@@ -55,11 +55,11 @@ https://github.com/user-attachments/assets/d3541d98-551b-4a55-987a-214f17f3c642
 ## 🚀 How to Run
 
 ```bash
-git clone https://github.com/ShakaByte/Pet-Care-App.git
+git clone https://github.com/prajwal12smp-cpu/Pet-Care-App.git
 cd Pet-Care-App
-# open index.html in a browser
+# Open index.html in a browser
 ```
 
 ## 👤 Author
 
-**Prajwal Shivashimpar** https://github.com/prajwal12smp-cpu
+**Prajwal Shivashimpar** 
