@@ -1,52 +1,77 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp,
+} from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+import {
+    getAuth,
+    onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+import { firebaseConfig } from "/firebase-config.js";
 
-const firebaseConfig = {
-    apiKey: " ",
-    authDomain: " ",
-    projectId: " ",
-    storageBucket: " ",
-    messagingSenderId: " ",
-    appId: " "
-};
-
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-// Use a listener to ensure the user is logged in before allowing a booking
+const form = document.querySelector(".appointment-form");
+const submitBtn = form.querySelector("button[type='submit']");
+
+// Status message element (created here so no HTML change is needed)
+const status = document.createElement("p");
+status.className = "booking-status";
+form.after(status);
+
+function setStatus(message, type) {
+    status.textContent = message;
+    status.className = `booking-status ${type}`;
+}
+
+// Prevent picking a past date
+document.getElementById("appointmentDate").min = new Date()
+    .toISOString()
+    .split("T")[0];
+
+let currentUser = null;
+
 onAuthStateChanged(auth, (user) => {
-    if (user) {
-        document.getElementById("appointment-form").addEventListener("submit", (e) => {
-            e.preventDefault();
-
-            const petName = document.getElementById("pet-name-book").value;
-            const appointmentDate = document.getElementById("appointment-date").value;
-            const appointmentTime = document.getElementById("appointment-time").value;
-            const clinicName = document.getElementById("clinic-name").value;
-
-            addDoc(collection(db, "appointments"), {
-                userId: user.uid,
-                petName: petName,
-                date: appointmentDate,
-                time: appointmentTime,
-                clinic: clinicName,
-                createdAt: serverTimestamp()
-            })
-            .then((docRef) => {
-                document.getElementById("booking-status").textContent = `Appointment booked successfully! ID: ${docRef.id}`;
-                document.getElementById("appointment-form").reset();
-            })
-            .catch((error) => {
-                document.getElementById("booking-status").textContent = `Error booking appointment: ${error.message}`;
-                console.error("Error adding document: ", error);
-            });
-        });
+    currentUser = user;
+    if (!user) {
+        setStatus("Please log in to book an appointment.", "error");
+        submitBtn.disabled = true;
     } else {
-        document.getElementById("booking-status").textContent = "Please log in to book an appointment.";
-        // Optionally disable the form if the user is not logged in
-        document.getElementById("appointment-form").style.display = 'none';
+        status.textContent = "";
+        submitBtn.disabled = false;
+    }
+});
+
+form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!currentUser) return;
+
+    const petName = document.getElementById("petName").value.trim();
+    const contactInfo = document.getElementById("contactInfo").value.trim();
+    const date = document.getElementById("appointmentDate").value;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Scheduling...";
+
+    try {
+        await addDoc(collection(db, "appointments"), {
+            userId: currentUser.uid,
+            petName,
+            contactInfo,
+            date,
+            createdAt: serverTimestamp(),
+        });
+        setStatus("Appointment booked successfully!", "success");
+        form.reset();
+    } catch (error) {
+        console.error("Error booking appointment:", error);
+        setStatus("Could not book the appointment. Please try again.", "error");
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Schedule Now";
     }
 });
