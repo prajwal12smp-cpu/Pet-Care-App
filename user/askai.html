@@ -3,50 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AskAi</title>
+    <title>Pet Care - Ask AI</title>
     <link rel="stylesheet" href="/assets/botstyle.css">
-    
+    <script type="module" src="/scripts/logout.js"></script>
+    <script type="module" src="/scripts/botscript.js"></script>
 </head>
 <body>
     <header>
-        <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Pet Health Logo" class="logo"/>
-        <h1>Pet Health Care Support</h1>
+        <div class="brand">
+            <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Pet Health Logo" class="logo">
+            <h1>Pet Health Care Support</h1>
+        </div>
         <nav>
             <a href="home.html">Home</a>
             <a href="clinicstore.html">Clinics and Stores</a>
             <a href="resources.html">Resources</a>
             <a href="askai.html" class="active">Ask AI</a>
             <a href="profile.html">Profile</a>
-            <button class="logout-btn">Logout</button>
+            <button type="button" class="logout-btn">Logout</button>
         </nav>
-        <script type="module" src="/scripts/logout.js"></script>
     </header>
-<main>
-    <div class="chat-container">
 
-        <div class="chat-header">
-            <h1>
-                ASK AI 
-            </h1>
+    <main>
+        <div class="chat-layout">
+            <aside class="sidebar" id="sidebar">
+                <button type="button" id="new-chat-btn" class="new-chat-btn">+ New chat</button>
+                <h3 class="history-title">Recent chats</h3>
+                <ul id="history-list" class="history-list"></ul>
+            </aside>
+
+            <section class="chat-panel">
+                <div class="chat-topbar">
+                    <button type="button" id="sidebar-toggle" class="icon-btn" aria-label="Toggle chat history">&#9776;</button>
+                    <h2 id="chat-title">New chat</h2>
+                </div>
+
+                <div class="chat-messages" id="chat-message" aria-live="polite">
+                    <div class="empty-state" id="empty-state">
+                        <div class="empty-icon" aria-hidden="true">&#x1F43E;</div>
+                        <h3>How can I help with your pet today?</h3>
+                        <div class="suggestions">
+                            <button type="button" class="suggestion" data-prompt="How often should I vaccinate my puppy?">How often should I vaccinate my puppy?</button>
+                            <button type="button" class="suggestion" data-prompt="What foods are toxic to cats?">What foods are toxic to cats?</button>
+                            <button type="button" class="suggestion" data-prompt="How do I keep my dog's teeth healthy?">How do I keep my dog's teeth healthy?</button>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="chat-input" id="chat-form">
+                    <textarea id="user-input" rows="1" placeholder="Ask about your pet's health and care..." aria-label="Message"></textarea>
+                    <button type="submit" id="sendbtn" aria-label="Send message">&#10148;</button>
+                </form>
+                <p class="disclaimer">AI can make mistakes. For emergencies, contact a vet immediately.</p>
+            </section>
         </div>
+    </main>
 
-        <div class="chat-message" id="chat-message"> </div>
-
-        <div class="chat-input">
-            <input type="text" placeholder="Ask your query" id="user-input">
-            <button id="sendbtn">Send</button>
-        </div>
-    </div>
-</main>
-<script src="/scripts/botscript.js"></script>
-<hr>
-<footer>
-    <p>&copy; 2025 Pet Care Support. All rights are reserved</p>
-    <p>
-        <a href="#">privacy Policy</a>
-        <a href="#">terms and conditions</a>
-        <a href="#">contact us</a>
-    </p>
-</footer>
+    <footer>
+        <p>&copy; 2025 Pet Care Support. All rights reserved.</p>
+        <p>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms and Conditions</a>
+            <a href="#">Contact Us</a>
+        </p>
+    </footer>
 </body>
 </html>
