@@ -1,46 +1,71 @@
+:root {
+    --green-900: #2d593b;
+    --green-700: #2e8b57;
+    --green-600: #4a7c40;
+    --green-500: #5aab5a;
+    --green-200: #c9e9d6;
+    --green-100: #e0f2e8;
+    --bg: #f7fff7;
+    --text: #333;
+    --danger: #dc3545;
+    --danger-dark: #c82333;
+    --radius: 10px;
+    --shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f7fff7; /* A soft, light green background */
-    color: #333;
+    background-color: var(--bg);
+    color: var(--text);
     line-height: 1.6;
 }
 
 /* Header and Navigation */
 header {
-    background-color: #e0f2e8; /* A slightly darker green for the header */
-    padding: 1.5rem 2em;
+    background-color: var(--green-100);
+    padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 header img {
     height: 50px;
-    margin-right: 15px;
+    width: 50px;
+    object-fit: contain;
 }
 
 header h1 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #2e8b57; /* A strong green for the heading */
+    color: var(--green-700);
 }
 
 header nav {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 header nav a {
     text-decoration: none;
-    color: #2e8b57;
+    color: var(--green-700);
     font-weight: bold;
     font-size: 1rem;
     padding: 0.5em 1em;
@@ -48,29 +73,33 @@ header nav a {
     border-radius: 6px;
 }
 
-header nav a:hover, header nav a.active {
-    background-color: #c9e9d6;
+header nav a:hover,
+header nav a.active {
+    background-color: var(--green-200);
 }
 
 .logout-btn {
-    background-color: #dc3545;
+    background-color: var(--danger);
     color: #fff;
     border: none;
     border-radius: 6px;
     padding: 0.5em 1.5em;
+    font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    margin-left: 20px;
+    margin-left: 10px;
     transition: background-color 0.3s ease;
 }
 
 .logout-btn:hover {
-    background-color: #c82333;
+    background-color: var(--danger-dark);
 }
 
+/* Main layout */
 main {
     max-width: 1100px;
     margin: 0 auto;
+    padding: 2rem 1.5rem;
 }
 
 .top-blocks {
@@ -79,16 +108,18 @@ main {
     margin-bottom: 40px;
 }
 
-.notifications, .trending-resources {
-    background: #ffffff;
+.notifications,
+.trending-resources {
+    background: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
     flex: 1;
 }
 
-.notifications h2, .trending-resources h2 {
-    color: #2d593b;
+.notifications h2,
+.trending-resources h2 {
+    color: var(--green-900);
     margin-bottom: 15px;
 }
 
@@ -99,12 +130,17 @@ main {
     margin-bottom: 15px;
 }
 
+.notification-item:last-child {
+    margin-bottom: 0;
+}
+
 .notification-item img {
     width: 100px;
     height: 100px;
+    flex-shrink: 0;
     border-radius: 15px;
     object-fit: cover;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
 .notification-item p {
@@ -121,53 +157,56 @@ main {
 .resource-item {
     display: flex;
     align-items: center;
+    gap: 15px;
     text-decoration: none;
     border: 2px solid #cce5cc;
     padding: 8px 12px;
     border-radius: 8px;
     transition: background-color 0.3s ease, border-color 0.3s ease;
     color: #275a27;
+    font-weight: 600;
 }
 
 .resource-item:hover {
     background-color: #90c695;
-    color: white;
-    border-color: #5aab5a;
+    color: #fff;
+    border-color: var(--green-500);
 }
 
 .resource-item img {
     width: 80px;
     height: 80px;
+    flex-shrink: 0;
     border-radius: 15px;
-    margin-right: 15px;
     object-fit: cover;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* Book appointment */
 .book-appointment {
     margin-bottom: 40px;
     background: url('https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
     border-radius: 15px;
     text-align: center;
     padding: 50px 20px;
-    color: white;
+    color: #fff;
     box-shadow: inset 0 0 0 1000px rgba(46, 105, 65, 0.5);
 }
 
 .book-appointment h2 {
     font-size: 2rem;
     margin-bottom: 25px;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .appointment-container {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.92);
     padding: 30px;
     border-radius: 15px;
-    display: inline-block;
+    width: 100%;
     max-width: 500px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    margin-top: 20px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .appointment-form {
@@ -178,7 +217,7 @@ main {
 
 .form-group {
     text-align: left;
-    color: #2d593b;
+    color: var(--green-900);
 }
 
 .form-group label {
@@ -198,39 +237,66 @@ main {
 
 .form-group input:focus {
     outline: none;
-    border-color: #4a7c40;
+    border-color: var(--green-600);
     box-shadow: 0 0 0 3px rgba(74, 124, 64, 0.2);
 }
 
 .appointment-btn {
-    background-color: #4a7c40;
+    background-color: var(--green-600);
     border: none;
-    padding: 15px 35px;
-    font-size: 1.2rem;
+    padding: 14px 35px;
+    font-size: 1.15rem;
     font-weight: 700;
-    color: white;
-    border-radius: 10px;
+    color: #fff;
+    border-radius: var(--radius);
     cursor: pointer;
-    box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.appointment-btn:hover {
+.appointment-btn:hover:not(:disabled) {
     background-color: #396832;
-    box-shadow: 0 8px 14px rgba(0,0,0,0.35);
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.35);
 }
 
+.appointment-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.booking-status {
+    margin-top: 15px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.booking-status:empty {
+    display: none;
+}
+
+.booking-status.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.booking-status.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* FAQ */
 .faq {
     max-width: 700px;
     margin: 0 auto 40px;
-    background: white;
+    background: #fff;
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
 }
 
 .faq h2 {
-    color: #2d593b;
+    color: var(--green-900);
     margin-bottom: 20px;
     text-align: center;
 }
@@ -241,56 +307,71 @@ main {
     gap: 15px;
 }
 
-.faq-item details {
+.faq-item {
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .faq-question {
     background-color: #90c4c6;
     color: #1e3d22;
-    width: 100%;
     padding: 15px 20px;
     font-size: 1rem;
-    border: none;
-    text-align: left;
     cursor: pointer;
     font-weight: 700;
-    display: block;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     transition: background-color 0.3s ease;
 }
 
+.faq-question::-webkit-details-marker {
+    display: none;
+}
+
+.faq-question::after {
+    content: "+";
+    margin-left: auto;
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
 .faq-item[open] .faq-question {
-    background-color: #4a7c40;
-    color: white;
+    background-color: var(--green-600);
+    color: #fff;
+}
+
+.faq-item[open] .faq-question::after {
+    content: "\2212";
 }
 
 .faq-question:hover {
-    background-color: #5aab5a;
-    color: white;
+    background-color: var(--green-500);
+    color: #fff;
 }
 
 .faq-answer {
     background-color: #e6f1e6;
     padding: 15px 20px;
     font-weight: 500;
-    color: #2d593b;
+    color: var(--green-900);
 }
 
-/* Footer Styles */
+/* Footer */
 footer {
     text-align: center;
     padding: 1.5em;
-    color: #777;
+    color: #5f6f65;
     font-size: 0.9em;
     margin-top: 2em;
-    border-top: 1px solid #e0eaf2;
-    background: #eef5ff;
+    border-top: 1px solid var(--green-200);
+    background: var(--green-100);
 }
 
 footer a {
-    color: #777;
+    color: #5f6f65;
     text-decoration: none;
     margin: 0 0.5em;
 }
@@ -299,35 +380,53 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
         text-align: center;
+        padding: 1rem;
     }
-    
-    header img {
-        margin: 0 0 10px 0;
+
+    .brand {
+        flex-direction: column;
+        gap: 8px;
     }
 
     header nav {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    header nav a {
-        margin: 5px 0;
+        justify-content: center;
     }
 
     .logout-btn {
-        margin: 10px 0 0 0;
+        margin-left: 0;
     }
 
     main {
-        padding: 1em;
+        padding: 1.5rem 1rem;
     }
-    
-    .container {
-        padding: 1em;
+
+    .top-blocks {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .book-appointment h2 {
+        font-size: 1.6rem;
+    }
+
+    .appointment-container {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .notification-item img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .resource-item img {
+        width: 60px;
+        height: 60px;
     }
 }
