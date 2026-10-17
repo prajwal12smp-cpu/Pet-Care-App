@@ -1,29 +1,25 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import { getAuth, signOut} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+import { firebaseConfig } from "/firebase-config.js";
 
-const firebaseConfig = {
-    apiKey: " ",
-    authDomain: " ",
-    projectId: " "
-    storageBucket: " ",
-    messagingSenderId: " ",
-    appId: " "
-  };
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth= getAuth(app);
+const logoutBtn = document.querySelector(".logout-btn, #logout-btn");
 
-const logoutbtn=document.getElementById('logout-btn');
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", async (event) => {
+        event.preventDefault();
+        logoutBtn.disabled = true;
 
-logoutbtn.addEventListener('click', (event)=>{
-    event.preventDefault();
-    localStorage.removeItem('loggedInUserId');
-    signOut(auth)
-    .then(()=>{
-        window.location.href='/auth/login.html';
-    })
-    .catch((error)=>{
-        console.error('error in logging out',error);
-    })
-})
+        try {
+            await signOut(auth);
+            localStorage.removeItem("loggedInUserId");
+            window.location.href = "/auth/login.html";
+        } catch (error) {
+            console.error("Error logging out:", error);
+            logoutBtn.disabled = false;
+            alert("Could not log out. Please try again.");
+        }
+    });
+}
