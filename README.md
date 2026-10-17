@@ -1,57 +1,65 @@
-📌 Overview
+# 🐶 Pet-Care-App
 
-The Pet Care Website is a responsive web application that helps pet owners manage their pets’ daily activities and health records in one place.
-It allows users to create pet profiles, track medical history, and set reminders for essential care routines like feeding, grooming, and vet visits.
+A responsive pet care web app to manage pet profiles, health records, and daily care reminders in one place.
 
-🚀 Features
-🐾 Manage multiple pet profiles
-💉 Track vaccinations and medical records
-⏰ Set reminders for daily activities
-📅 Schedule vet visits
-📊 Organised dashboard view
-🌐 Fully responsive design
+## 📌 Overview
 
-🛠️ Tech Stack
-Frontend: HTML, CSS, JavaScript
-Structure: Modular folders (assets, auth, user, scripts)
-Version Control: Git & GitHub
+Pet-Care-App helps pet owners keep track of their pets' daily activities and health. Users can create pet profiles, record medical history, and set reminders for feeding, grooming, and vet visits.
 
-📸 Screenshots:
+## ❗ Problem Statement
 
-    Home Page
+Pet owners often juggle care details across notes, chats, and paper records.
+- Vaccination and medical history is easy to lose
+- Feeding, grooming, and vet visits get forgotten
+- No single place to manage more than one pet
+- Local clinics and care resources are hard to find
 
-<img width="1906" height="978" alt="home page" src="https://github.com/user-attachments/assets/372fff2b-c9f3-4314-8720-c7171b73b71f" />
+## ✅ Solution
 
-    Clinics and Stores
+A single dashboard for everything pet-related:
+- **Multiple pet profiles:** manage all your pets in one account
+- **Health records:** track vaccinations and medical history
+- **Reminders:** set alerts for feeding, grooming, and other routines
+- **Vet scheduling:** plan and keep track of vet visits
+- **Clinics and stores:** browse nearby care options
+- **Resources:** pet care guidance in one place
+- **Responsive design:** works on desktop and mobile
+- **AI ChatBot:** 
 
-<img width="1915" height="917" alt="clinics and stores" src="https://github.com/user-attachments/assets/a455d77b-b266-46a4-86c4-dd51a8214381" />
+## 🛠️ Tech Stack
 
-    Resources
+| Layer | Technology |
+|-------|------------|
+| Frontend | HTML, CSS, JavaScript |
+| Project Structure | Modular folders (`assets`, `auth`, `user`, `scripts`) |
+| Version Control | Git, GitHub |
 
-<img width="1912" height="962" alt="resources " src="https://github.com/user-attachments/assets/4bb652bd-2f76-4685-968b-2076bd2472bc" />
+## 📸 Screenshots
 
-    Pet Profile
+### Home Page
+<img width="1906" alt="Home page" src="https://github.com/user-attachments/assets/372fff2b-c9f3-4314-8720-c7171b73b71f" />
 
-<img width="1920" height="975" alt="pet profile" src="https://github.com/user-attachments/assets/e490b02f-3e2c-4806-98a4-75e11278ad23" />
+### Clinics and Stores
+<img width="1915" alt="Clinics and stores" src="https://github.com/user-attachments/assets/a455d77b-b266-46a4-86c4-dd51a8214381" />
 
+### Resources
+<img width="1912" alt="Resources" src="https://github.com/user-attachments/assets/4bb652bd-2f76-4685-968b-2076bd2472bc" />
 
-Demo Video:
+### Pet Profile
+<img width="1920" alt="Pet profile" src="https://github.com/user-attachments/assets/e490b02f-3e2c-4806-98a4-75e11278ad23" />
 
-
+## 🎥 Demo Video
 
 https://github.com/user-attachments/assets/d3541d98-551b-4a55-987a-214f17f3c642
 
+## 🚀 How to Run
 
+```bash
+git clone https://github.com/ShakaByte/Pet-Care-App.git
+cd Pet-Care-App
+# open index.html in a browser
+```
 
+## 👤 Author
 
-
-
-
-
-
-
-
-
-
-
-
+**Prajwal Shivashimpar** https://github.com/prajwal12smp-cpu
