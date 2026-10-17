@@ -1,64 +1,74 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-import { getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+import { firebaseConfig } from "/firebase-config.js";
 
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-  const firebaseConfig = {
-    apiKey: " ",
-    authDomain: " ",
-    projectId: " ",
-    storageBucket: " ",
-    messagingSenderId: " ",
-    appId: " "
-  };
+const form = document.querySelector("form");
+const signUpBtn = document.getElementById("signup");
+let hideTimer;
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+function showMessage(message, divId, type = "error") {
+    const messageDiv = document.getElementById(divId);
+    clearTimeout(hideTimer);
+    messageDiv.className = `messageDiv ${type}`;
+    messageDiv.textContent = message;
+    messageDiv.style.display = "block";
+    messageDiv.style.opacity = 1;
+    hideTimer = setTimeout(() => {
+        messageDiv.style.opacity = 0;
+    }, 5000);
+}
 
-function showMessage(message, divId){
-    var messageDiv=document.getElementById(divId);
-    messageDiv.style.display="block";
-    messageDiv.innerHTML=message;
-    messageDiv.style.opacity=1;
-    setTimeout(function(){
-        messageDiv.style.opacity=0;
-    },5000);
- }
- const signUp=document.getElementById('signup');
- signUp.addEventListener('click', (event)=>{
+function getErrorMessage(code) {
+    switch (code) {
+        case "auth/email-already-in-use":
+            return "This email is already registered";
+        case "auth/invalid-email":
+            return "Please enter a valid email address";
+        case "auth/weak-password":
+            return "Password must be at least 6 characters";
+        case "auth/network-request-failed":
+            return "Network error. Check your connection";
+        default:
+            return "Unable to create account. Please try again";
+    }
+}
+
+form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const name=document.getElementById('name').value;
-    const email=document.getElementById('email').value;
-    const password=document.getElementById('password').value;
-    
-    const auth=getAuth();
-    const db=getFirestore();
 
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential)=>{
-        const user=userCredential.user;
-        const userData={
-          name:name,
-          email:email
-        };
-        showMessage('Account Created Successfully', 'signupMessage');
-        const docRef=doc(db, "users", user.uid);
-        setDoc(docRef,userData)
-        .then(()=>{
-            window.location.href='login.html';
-        })
-        .catch((error)=>{
-            console.error("error writing document", error);
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
 
-        });
-    })
-    .catch((error)=>{
-        const errorCode=error.code;
-        if(errorCode=='auth/email-already-in-use'){
-            showMessage('Email Address Already Exists !!!', 'signupMessage');
-        }
-        else{
-            showMessage('unable to create User', 'signupMessage');
-        }
-    })
- });
+    signUpBtn.disabled = true;
+    signUpBtn.textContent = "Creating account...";
+
+    try {
+        const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password,
+        );
+        const user = userCredential.user;
+
+        await setDoc(doc(db, "users", user.uid), { name, email });
+
+        showMessage("Account created successfully", "signupMessage", "success");
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 1000);
+    } catch (error) {
+        console.error("Signup error:", error);
+        const message = error.code
+            ? getErrorMessage(error.code)
+            : "Unable to create account. Please try again";
+        showMessage(message, "signupMessage", "error");
+        signUpBtn.disabled = false;
+        signUpBtn.textContent = "Sign Up";
+    }
+});
